@@ -63,10 +63,7 @@ public class SkunkDomain
 				if (skunkDice.getLastRoll() == 2)
 				{
 					ui.println("Two Skunks! You lose the turn, the round score, plus pay 4 chips to the kitty");
-					kitty += 4;
-					activePlayer.setNumberChips(activePlayer.getNumberChips() - 4);
-					activePlayer.setTurnScore(0);
-					activePlayer.setRoundScore(0);
+					scoreRoll(4);
 					wantsToRoll = false;
 					break;
 				}
@@ -74,9 +71,7 @@ public class SkunkDomain
 				{
 					ui.println(
 							"Skunks and Deuce! You lose the turn, the turn score, plus pay 2 chips to the kitty");
-					kitty += 2;
-					activePlayer.setNumberChips(activePlayer.getNumberChips() - 2);
-					activePlayer.setTurnScore(0);
+					scoreRoll(3);
 					wantsToRoll = false;
 					break;
 				}
@@ -149,9 +144,7 @@ public class SkunkDomain
 				if (skunkDice.getLastRoll() == 2)
 				{
 					ui.println("Two Skunks! You lose the turn, the turn score, plus pay 4 chips to the kitty");
-					kitty += 4;
-					activePlayer.setNumberChips(activePlayer.getNumberChips() - 4);
-					activePlayer.setTurnScore(0);
+					scoreRoll(4);
 					wantsToRoll = false;
 					break;
 				}
@@ -159,19 +152,14 @@ public class SkunkDomain
 				{
 					ui.println(
 							"Skunks and Deuce! You lose the turn, the turn score, plus pay 2 chips to the kitty");
-					kitty += 2;
-					activePlayer.setNumberChips(activePlayer.getNumberChips() - 2);
-					activePlayer.setTurnScore(0);
+					scoreRoll(1);
 					wantsToRoll = false;
 
 				}
 				else if (skunkDice.getDie1().getLastRoll() == 1 || skunkDice.getDie2().getLastRoll() == 1)
 				{
 					ui.println("One Skunk! You lose the turn, the turn core, plus pay 1 chip to the kitty");
-					kitty += 1;
-					activePlayer.setNumberChips(activePlayer.getNumberChips() - 1);
-					activePlayer.setTurnScore(0);
-					activePlayer.setRoundScore(0);
+					scoreRoll(1);
 					wantsToRoll = false;
 				}
 				else
@@ -235,6 +223,14 @@ public class SkunkDomain
 
 		ui.println("-----------------------");
 		return true;
+	}
+
+	private void scoreRoll(int chipsLost)			//refactored redundant loop
+	{
+		kitty += 4;
+		activePlayer.setNumberChips(activePlayer.getNumberChips() - 4);
+		activePlayer.setTurnScore(0);
+		activePlayer.setRoundScore(0);
 	}
 
 	public static void main(String[] args)
