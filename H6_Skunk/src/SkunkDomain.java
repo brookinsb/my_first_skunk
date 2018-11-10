@@ -225,7 +225,7 @@ public class SkunkDomain
 		return true;
 	}
 
-	private void scoreRoll(int chipsLost)			//refactored redundant loop
+	private void scoreRoll(int chipsLost)			//refactored redundant loop yeah
 	{
 		kitty += 4;
 		activePlayer.setNumberChips(activePlayer.getNumberChips() - 4);
